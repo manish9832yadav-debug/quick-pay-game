@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Quick Play</title>
+
+<style>
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#071b18;
+  color:white;
+}
+
+.app{
+  max-width:430px;
+  margin:auto;
+  min-height:100vh;
+  background:#0b2722;
+  padding-bottom:30px;
+}
+
+.header{
+  padding:20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo{
+  font-size:24px;
+  font-weight:bold;
+}
+
+.balance{
+  background:#123d35;
+  padding:10px 14px;
+  border-radius:12px;
+}
+
+.banner{
+  margin:0 15px 20px;
+  padding:22px;
+  border-radius:20px;
+  background:linear-gradient(135deg,#126b58,#0d4439);
+}
+
+.banner h2{
+  margin:0 0 8px;
+}
+
+.banner p{
+  margin:0;
+  color:#b8d5ce;
+}
+
+.section{
+  padding:0 15px;
+}
+
+.section h3{
+  margin-top:25px;
+}
+
+.games{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+}
+
+.game{
+  border:0;
+  color:white;
+  text-align:left;
+  padding:18px;
+  min-height:110px;
+  border-radius:18px;
+  background:#103a32;
+  cursor:pointer;
+}
+
+.icon{
+  font-size:32px;
+}
+
+.name{
+  margin-top:10px;
+  font-size:17px;
+  font-weight:bold;
+}
+
+.small{
+  color:#9bbdb5;
+  font-size:12px;
+  margin-top:4px;
+}
+
+.bottom{
+  position:sticky;
+  bottom:0;
+  margin-top:25px;
+  background:#08211d;
+  display:flex;
+  justify-content:space-around;
+  padding:14px 5px;
+  border-top:1px solid #17453c;
+}
+
+.bottom button{
+  border:0;
+  background:none;
+  color:#a9c4be;
+  font-size:13px;
+}
+
+.bottom .active{
+  color:white;
+  font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+  <header class="header">
+    <div class="logo">QUICK PLAY</div>
+
+    <div class="balance">
+      ₹0.00
+    </div>
+  </header>
+
+
+  <div class="banner">
+    <h2>🎮 Game Zone</h2>
+    <p>Choose a game and start playing.</p>
+  </div>
+
+
+  <div class="section">
+
+    <h3>Popular Games</h3>
+
+    <div class="games">
+
+      <button class="game" onclick="openGame('wingo')">
+        <div class="icon">🎯</div>
+        <div class="name">WinGo</div>
+        <div class="small">Number game</div>
+      </button>
+
+      <button class="game" onclick="openGame('mines')">
+        <div class="icon">💣</div>
+        <div class="name">Mines</div>
+        <div class="small">Find safe tiles</div>
+      </button>
+
+      <button class="game" onclick="openGame('crash')">
+        <div class="icon">🚀</div>
+        <div class="name">Crash</div>
+        <div class="small">Multiplier game</div>
+      </button>
+
+      <button class="game" onclick="openGame('dice')">
+        <div class="icon">🎲</div>
+        <div class="name">Dice</div>
+        <div class="small">Roll & play</div>
+      </button>
+
+      <button class="game" onclick="openGame('color')">
+        <div class="icon">🎨</div>
+        <div class="name">Color</div>
+        <div class="small">Color prediction</div>
+      </button>
+
+      <button class="game" onclick="openGame('spin')">
+        <div class="icon">🎡</div>
+        <div class="name">Spin</div>
+        <div class="small">Lucky wheel</div>
+      </button>
+
+      <button class="game" onclick="openGame('lucky7')">
+        <div class="icon">🍀</div>
+        <div class="name">Lucky 7</div>
+        <div class="small">Lucky number</div>
+      </button>
+
+      <button class="game" onclick="openGame('highlow')">
+        <div class="icon">📈</div>
+        <div class="name">High / Low</div>
+        <div class="small">Choose your side</div>
+      </button>
+
+      <button class="game" onclick="openGame('coin')">
+        <div class="icon">🪙</div>
+        <div class="name">Head / Tail</div>
+        <div class="small">Coin flip</div>
+      </button>
+
+      <button class="game" onclick="openGame('roulette')">
+        <div class="icon">🎰</div>
+        <div class="name">Roulette</div>
+        <div class="small">Number wheel</div>
+      </button>
+
+      <button class="game" onclick="openGame('card')">
+        <div class="icon">🃏</div>
+        <div class="name">Cards</div>
+        <div class="small">Card game</div>
+      </button>
+
+      <button class="game" onclick="openGame('andarbahar')">
+        <div class="icon">♠️</div>
+        <div class="name">Andar Bahar</div>
+        <div class="small">Card-style game</div>
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <nav class="bottom">
+
+    <button class="active">🏠<br>Home</button>
+
+    <button onclick="showMessage('Games')">
+      🎮<br>Games
+    </button>
+
+    <button onclick="showMessage('History')">
+      📋<br>History
+    </button>
+
+    <button onclick="showMessage('Account')">
+      👤<br>Account
+    </button>
+
+  </nav>
+
+</div>
+
+
+<script>
+
+function openGame(game){
+
+  alert(
+    game.toUpperCase() +
+    " game module will open here."
+  );
+
+}
+
+
+function showMessage(page){
+
+  alert(page + " section");
+}
+
+</script>
+
+</body>
+</html>
